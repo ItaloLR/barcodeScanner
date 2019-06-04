@@ -20,14 +20,13 @@
     <div id="scanner-container"></div>
 
     <div id="resultadoBarCode">Resultado</div>
-    
+
     <!-- Include the image-diff library -->
     <script src="js/quagga.min.js"></script>
     
 
     <script>
         
-        function startScanner() {
             Quagga.init({
                 inputStream: {
                     name: "Live",
@@ -78,26 +77,13 @@
 
             });
 
-               
-            if (result==true) {
-            Quagga.onDetected(function (result) {
+            Quagga.onDetected(function (result){
                 //console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
 
                 document.getElementById('resultadoBarCode').innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]", result;
 
             });
-
-        }
-             //Retorna valores
-            function retorna_valores(codProduto){
-
-            var codProduto = codeResult.code;
-
-            	return(codProduto);
-            }
-
-        }
-
+               
     </script>
 </body>
 
