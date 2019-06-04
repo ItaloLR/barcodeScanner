@@ -20,16 +20,13 @@
     <div id="scanner-container"></div>
 
     <div id="resultadoBarCode">Resultado</div>
-
-    <input type="button" id="btn" value="Start/Stop the scanner" />
-
+    
     <!-- Include the image-diff library -->
     <script src="js/quagga.min.js"></script>
     
 
     <script>
-        var _scannerIsRunning = false;
-
+        
         function startScanner() {
             Quagga.init({
                 inputStream: {
@@ -79,35 +76,9 @@
                 console.log("Initialization finished. Ready to start");
                 Quagga.start();
 
-                // Set flag to is running
-                _scannerIsRunning = true;
             });
 
-            Quagga.onProcessed(function (result) {
-                var drawingCtx = Quagga.canvas.ctx.overlay,
-                drawingCanvas = Quagga.canvas.dom.overlay;
-
-                if (result) {
-                    if (result.boxes) {
-                        drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
-                        result.boxes.filter(function (box) {
-                            return box !== result.box;
-                        }).forEach(function (box) {
-                            Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, { color: "green", lineWidth: 2 });
-                        });
-                    }
-
-                    if (result.box) {
-                        Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, { color: "#00F", lineWidth: 2 });
-                    }
-
-                    if (result.codeResult && result.codeResult.code) {
-                        Quagga.ImageDebug.drawPath(result.line, { x: 'x', y: 'y' }, drawingCtx, { color: 'red', lineWidth: 3 });
-                    }
-                }
-            });
-
-
+               
             if (result==true) {
             Quagga.onDetected(function (result) {
                 //console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
@@ -117,7 +88,6 @@
             });
 
         }
-
              //Retorna valores
             function retorna_valores(codProduto){
 
@@ -128,15 +98,6 @@
 
         }
 
-
-        // Start/stop scanner
-        document.getElementById("btn").addEventListener("click", function () {
-            if (_scannerIsRunning) {
-                Quagga.stop();
-            } else {
-                startScanner();
-            }
-        }, false);
     </script>
 </body>
 
