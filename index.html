@@ -77,17 +77,25 @@
             Quagga.onDetected(function (result) {
                 //console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
                 document.getElementById('resultadoBarCode').innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]", result;
+                	
             });
         
              //Retorna valores
             function retorna_valores(codProduto){
             var codProduto = codeResult.code;
             	return(codProduto);
+
+            	if (codProduto == '13'.length) {
+
+                		var armazenaCache = localStorage.setItem("resultadoBarCode",value);
+                		console.log(armazenaCache);
+
+                	}
+
             }
 
             retorna_valores();
-
-
+     
     </script>
 </body>
 
