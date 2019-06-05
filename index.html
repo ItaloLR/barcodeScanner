@@ -111,12 +111,13 @@
             var codProduto = codeResult.code;
 
             	return(codProduto);
-            	return(armazenaCache);
+            	document.write(codProduto);
+
             	if (codProduto.length == '13') {
 
                 		var armazenaCache = localStorage.setItem("resultadoBarCode",value);
-                		console.log(armazenaCache);
-                		console.log(ResutFinal);
+                		document.write(armazenaCache);
+                		document.write(ResutFinal);
                 	}
 
             }
