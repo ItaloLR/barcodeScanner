@@ -20,6 +20,7 @@
     <div id="scanner-container"></div>
 
     <div id="resultadoBarCode">Resultado</div>
+    <div id="resultadoCache">Cache</div>
    
     <!-- Include the image-diff library -->
     <script src="js/quagga.min.js"></script>
@@ -75,19 +76,6 @@
             });
 
 
-              Quagga.onProcessed(function (result) {
-                var drawingCtx = Quagga.canvas.ctx.overlay,
-                drawingCanvas = Quagga.canvas.dom.overlay;
-                if (result) {
-                  
-                    if (result.codeResult && result.codeResult.code) {
-                        Quagga.ImageDebug.drawPath(result.line, { x: 'x', y: 'y' }, drawingCtx, { color: 'red', lineWidth: 3 });
-                    }
-                }
-            });
-
-
-
             var ResutFinal = document.getElementById('resultadoBarCode').innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]", result;
                 
             Quagga.onDetected(function (result) {
@@ -105,8 +93,9 @@
             	if (codProduto.length == '13') {
 
                 		var armazenaCache = localStorage.setItem("resultadoBarCode",value);
-                		document.write(armazenaCache);
-                		document.write(ResutFinal);
+                		armazenaCache = document.querySelector("#resultadoCache").innerHTML = "Cache : [" + result.codeResult.code + "]", result;
+                		 ResutFinal = document.querySelector("#resultadoBarCode").innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]", result;
+
                 	}
 
             }
