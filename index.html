@@ -88,15 +88,18 @@
             function retorna_valores(codProduto){
             var codProduto = codeResult.code;
 
-            	return(codProduto);
-            	
-            	if (codProduto.length == '13') {
+           		 return(codProduto);
+  	
+            	if (codProduto.length == 13) {
 
                 		var armazenaCache = localStorage.setItem("resultadoBarCode",value);
                 		armazenaCache = document.querySelector("#resultadoCache").innerHTML = "Cache : [" + result.codeResult.code + "]", result;
+
                 		 ResutFinal = document.querySelector("#resultadoBarCode").innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]", result;
 
                 	}
+
+                	return(codProduto);
 
             }
 
