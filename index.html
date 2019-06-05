@@ -73,29 +73,32 @@
                 console.log("Initialization finished. Ready to start");
                 Quagga.start();
             });
+
+            var ResutFinal = document.getElementById('resultadoBarCode').innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]", result;
                 
             Quagga.onDetected(function (result) {
                 //console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
-                document.getElementById('resultadoBarCode').innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]", result;
+                ResutFinal;
                 	
             });
         
              //Retorna valores
             function retorna_valores(codProduto){
             var codProduto = codeResult.code;
-            	return(codProduto);
 
-            	if (codProduto == '13'.length) {
+            	return(codProduto);
+            	alert(codProduto);
+            	if (codProduto.length == '13') {
 
                 		var armazenaCache = localStorage.setItem("resultadoBarCode",value);
                 		console.log(armazenaCache);
-
+                		console.log(ResutFinal);
                 	}
 
             }
 
             retorna_valores();
-     
+
     </script>
 </body>
 
