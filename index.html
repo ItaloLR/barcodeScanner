@@ -75,34 +75,23 @@
                 Quagga.start();
             });
 
-
-            var ResutFinal = document.getElementById('resultadoBarCode').innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]", result;
                 
-            Quagga.onDetected(function (result) {
+            Quagga.onDetected(function (data) {
                 //console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
-                ResutFinal;
-                armazenaCache;
-                	
-            });
-        
-             //Retorna valores
-            function retorna_valores(codProduto){
-            var codProduto = codeResult.code;
 
-           		 return(codProduto);
-  	
+                var codProduto = 13;
+
             	if (codProduto.length == 13) {
 
                 		var armazenaCache = localStorage.setItem("resultadoBarCode",value);
-                		armazenaCache = document.querySelector("#resultadoCache").innerHTML = "Cache : [" + result.codeResult.code + "]", result;
+                		armazenaCache = document.querySelector("#resultadoCache").innerHTML = "Cache : [" + data.codeResult.code + "]", data;
 
-                		 ResutFinal = document.querySelector("#resultadoBarCode").innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]", result;
+                		var ResutFinal = document.querySelector("#resultadoBarCode").innerHTML = "Barcode detected and processed : [" + data.codeResult.code + "]", data;
 
                 	}
-
-            }
-
-            retorna_valores();
+                	
+            });
+       
 
     </script>
 </body>
