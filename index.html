@@ -74,25 +74,18 @@
                 console.log("Initialization finished. Ready to start");
                 Quagga.start();
             });
-
                 
-            Quagga.onDetected(function (data) {
+            Quagga.onDetected(function (result, codProduto) {
                 //console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
-
-                var codProduto = 13;
-
-            	if (codProduto.length == 13) {
-
-                		var armazenaCache = localStorage.setItem("resultadoBarCode",value);
-                		armazenaCache = document.querySelector("#resultadoCache").innerHTML = "Cache : [" + data.codeResult.code + "]", data;
-
-                		var ResutFinal = document.querySelector("#resultadoBarCode").innerHTML = "Barcode detected and processed : [" + data.codeResult.code + "]", data;
-
-                	}
-                	
+                var codProduto = codeResult.code;
+                if (codProduto.length == 13) {
+                        var armazenaCache = localStorage.setItem("resultadoBarCode",value);
+                        armazenaCache = document.querySelector("#resultadoCache").innerHTML = "Cache : [" + result.codeResult.code + "]", result;
+                        var ResutFinal = document.querySelector("#resultadoBarCode").innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]", result;
+                    }
+                    
             });
        
-
     </script>
 </body>
 
